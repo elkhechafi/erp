@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InfinyBox | Acceuil</title>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css'>
+    <link rel="stylesheet" href="./node_modules/chart.js/dist/Chart.css">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+    <div class="Top">
+        <div class="topleft">
+            <h2>InfinyBox</h2>
+        </div>
+        <div class="topcenter">
+            <h2 id="displayedDate"></h2>
+        </div>
+        <div class="topright">
+            <label>
+                <input type="checkbox" name="">
+                <div class="icon-box">
+                    <i class="far fa-bell"></i>
+                </div>
+            </label>
+            <label>
+                <input type="checkbox" name="" id="themeSwitch">
+                <div class="icon-box">
+                    <i class="far fa-moon"></i>
+                </div>
+            </label>
+        </div>
+    </div>
+    <div class="mainContent">
+        <!--SideBar start here-->
+        <div class="sidebar">
+            <div class="nav">
+                <h1 class="navLinks">Test</h1>
+                <h1 class="navLinks"><a href="./inventory.html">Stock</a></h1>
+            </div>
+        </div>
+        <!--SideBar end here here-->
+        <div class="pageContent">
+            <!--Top Chart is here-->
+            <div class="chartParent" id="chartParent">
+                <canvas id="myChart" class="chart" height="150" width="1000"></canvas>
+            </div>
+            <!--Top Chart end here-->
+
+            <!--Statistics is here-->
+            <div class="statistics">
+                <div class="card">
+                    <h2>Stock</h2>
+                    <div class="innercard">
+                        <div class="leftInnercard stock">
+                            <div class="rangeSliderdiv">
+                                <h4 style="width: 60%;">Stock General:</h4>
+                                <h2 style="width: 40%;">60%</h2>
+                                <div class="rangebg1" >
+                                    <div class="range1"></div>
+                                </div>
+                            </div>
+                            <div class="rangeSliderdiv half">
+                                <h4 style="width: 55%; margin-bottom: 2%;">Fourniture de Bureau</h4>
+                                <h2 style="width: 35%; margin-bottom: 2%;">77%</h2>
+                                <div class="rangebg2">
+                                    <div class="range2"></div>
+                                </div>
+                            </div>
+                            <div class="rangeSliderdiv half">
+                                <h4 style="width: 55%;">Matériel & Èquipement</h4>
+                                <h2 style="width: 35%;">49%</h2>
+                                <div class="rangebg3">
+                                    <div class="range3"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="rightInnercard" >
+                            <h4>Stock:</h4>
+                            <h2>60%</h2>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="card">
+                    <h2>Vente</h2>
+                    <div class="innercard" style="padding: 1% 0% 0% 1%;">
+                        <div class="leftInnercard">
+                            <canvas id="myChart2" height="150" width="250"></canvas>
+                        </div>
+                        <div class="rightInnercard">
+                            <div class="groupe">
+                                <h4>Vente du mois</h4>
+                                <h2>182,035.00 Dh</h2>
+                            </div>
+                            <div class="groupe" style="margin-top: 5%;">
+                                <h4>Produit Vedette</h4>
+                                <h2>Lorem</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <h2>Caisse</h2>
+                    <div class="innercard">
+                        <div class="leftInnercard Caisse">
+                            <div class="rangeSliderdiv">
+                                <h4 style="width: 60%; padding: 1%;">Caise actuel:</h4>
+                                <h2 style="width: 40%;">2,500.00DH</h2>
+                                <div class="rangebg1" >
+                                    <div class="range1"></div>
+                                </div>
+                            </div>
+                            <div class="rangeSliderdiv half">
+                                <h4 >Objectif du jour</h4>
+                                <h2 >4,500.00DH</h2>
+                                <div class="rangebg2">
+                                    <div class="range2"></div>
+                                </div>
+                            </div><div class="rangeSliderdiv half">
+                                <h4>Objectif du mois</h4>
+                                <h2>139,500.00</h2>
+                                <div class="rangebg3">
+                                    <div class="range3"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Statistics end here-->
+
+            <!--Product Table is here-->
+            <div class="productTable">
+                <div class="dynamicTables">
+                <h2>Produit Clés</h2>
+                <input type="text" id="myInput" onkeyup="ProductTableFilter()" placeholder="Nom du Produit : ">
+            </div>
+                <!--Product Table is here-->
+                <table id="ProductTable">
+                    <tr class="header">
+                        <th>Nom du Produit</th>
+                        <th>Catégorie</th>
+                        <th>Stock</th>
+                        <th>Prix UT</th>
+                        <th>Résultat</th>
+                    </tr>
+                    <tr>
+                        <td>Produit 1</td>
+                        <td>Catégorie 1</td>
+                        <td><p class="full">96%</p></td>
+                        <td>13.00 DH</td>
+                        <td>4000.00 DH</td>
+                    </tr>
+                    <tr>
+                        <td>Produit 2</td>
+                        <td>Catégorie 2</td>
+                        <td><p class="full">80%</p></td>
+                        <td>21.00 DH</td>
+                        <td>2100.00 DH</td>
+                    </tr>
+                    <tr>
+                        <td>Produit 3</td>
+                        <td>Catégorie 3</td>
+                        <td><p class="low">35%</p></td>
+                        <td>25.00 DH</td>
+                        <td>20,750.00 DH</td>
+                    </tr>
+                    
+                </table>
+                <!--Product Table end here-->
+            </div>
+            <!--Product Table end here-->
+
+            <!--Messages is here-->
+            <div class="messages">
+                <div class="top">
+                    <div class="title">
+                        <h2>Top Alerte</h2>
+                    </div>
+                    <div class="messageslist">
+                        <div class="message">
+                            <h4 class="title">Stock Présque épuiser</h4>
+                            <p class="message">Stock du Produit 3 présque épuiser, voulez vous contacter le fournisseure?</p>
+                            <label>
+                                <input type="checkbox" name="">
+                                <div class="icon-box">
+                                    <i class="far fa-compass"></i>
+                                </div>
+                            </label>
+                            
+                        </div>
+                    </div>
+                    <div class="messageslist">
+                        <div class="message">
+                            <h4 class="title">Stock Présque épuiser</h4>
+                            <p class="message">Stock du Produit 3 présque épuiser, voulez vous contacter le fournisseure?</p>
+                            <label>
+                                <input type="checkbox" name="">
+                                <div class="icon-box">
+                                    <i class="far fa-compass"></i>
+                                </div>
+                            </label>
+                            
+                        </div>
+                    </div>
+                    <div class="messageslist">
+                        <div class="message">
+                            <h4 class="title">Stock Présque épuiser</h4>
+                            <p class="message">Stock du Produit 3 présque épuiser, voulez vous contacter le fournisseure?</p>
+                            <label>
+                                <input type="checkbox" name="">
+                                <div class="icon-box">
+                                    <i class="far fa-compass"></i>
+                                </div>
+                            </label>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Messages end here-->
+        </div>
+    </div>
+    
+    
+    <script src="./js/neumorphic.js"></script>
+    <script src="./js/switch-theme.js"></script>
+    <script src="./js/functions.js"></script>
+    <script src="./node_modules/chart.js/dist/Chart.js"></script>
+    <script src="./js/chart.js"></script>
+</body>
+</html>
