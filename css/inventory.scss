@@ -15,7 +15,7 @@
     --color-bg : #efeeee;
     --font-color: #05114b;
     --box-shadow1: rgb(0,0,0,.07);
-    --box-shadow2: #ecd2d2;
+    --box-shadow2: #3535357e;
     --chartParent-bg: #ffffffbe;
     --title-color: #000000;
     --table-header: #05114b;
@@ -186,6 +186,43 @@ body{
         width: 90%;
         .headerCards{
             width: 100%;
+            padding: 3% 1% 2% 1%;
+            display: inline-flex;
+            justify-content: space-evenly;
+        #firstCard{
+          background-image: url('https://images.pexels.com/photos/1329711/pexels-photo-1329711.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+          background-position: center;
+          background-size: cover;
+          box-shadow: 2px 3px 9px 5px var(--box-shadow2);
         }
+        #secondCard{
+          background-image: url(https://images.pexels.com/photos/2343468/pexels-photo-2343468.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500);
+          background-position: center;
+          background-size: cover;
+          box-shadow: 2px 3px 9px 5px var(--chartParent-bg);
+        }
+        .card{
+          width: 22%;
+          height: 17vh;
+          box-shadow: var(--nm-inset);
+          border-radius: 1rem;
+          display: inline-flex;
+          justify-content: center;
+          align-items: center;
+          flex-wrap: wrap;
+          .title{
+            text-align: center;
+            color: #111111;
+            padding: 5% 1% 5% 2%;
+            background-color: #efeeee98;
+          }
+
+          &.overlay{
+            width: 1;
+            height: inherit;
+          }
+        }
+        
+      }
     }
 }

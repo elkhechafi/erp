@@ -6123,12 +6123,14 @@ readers do not read off random characters that represent icons */
 :root {
   --color-bg: #efeeee;
   --font-color: #000;
-  --box-shadow1: rgb(0,0,0,.07);
+  --box-shadow1: #00000012;
   --box-shadow2: #ecd2d2;
   --chartParent-bg: #ffffffbe;
   --title-color: #000000;
   --table-header: #05114b;
   --table-font: #ffffff;
+  --scrollbarBG: #e09145;
+  --thumbBG: #ffffff;
   --nm: 6px 6px 16px 0 rgba(0, 0, 0, 0.2),
           -6px -6px 16px 0 rgba(255, 255, 255, 1);
   --nm-inset:inset 4px 4px 8px 0 rgba(0, 0, 0, 0.2),
@@ -6144,6 +6146,8 @@ readers do not read off random characters that represent icons */
   --title-color: #ffffff;
   --table-header: #0a1a2f8a;
   --table-font: #fff;
+  --scrollbarBG: rgb(228, 228, 228);
+  --thumbBG: #90A4AE;
   --nm: 6px 6px 16px 0 rgba(255, 255, 255, 0.2),
           -6px -6px 16px 0 rgba(0, 0, 0, 0.8);
   --nm-inset:inset 4px 4px 8px 0  rgba(255, 255, 255, 0.2),
@@ -6163,6 +6167,16 @@ body {
   width: 100%;
   height: 100%;
   position: relative;
+}
+
+body::-webkit-scrollbar {
+  width: 4em;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--thumbBG);
+  border-radius: 15px;
+  border: 3px solid var(--scrollbarBG);
 }
 
 .Top {
@@ -6384,6 +6398,8 @@ body {
   transition: 1s ease-in-out !important;
   background-color: var(--chartParent-bg);
   padding-bottom: 3%;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
 }
 
 .mainContent .pageContent .chartParent .chart {
@@ -6411,6 +6427,27 @@ body {
   margin-top: -4%;
 }
 
+.mainContent .pageContent .statistics .vente {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.mainContent .pageContent .statistics .vente .rightInnercard {
+  width: 48%;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+}
+
 .mainContent .pageContent .statistics .card {
   width: 28%;
   height: -webkit-max-content;
@@ -6424,9 +6461,11 @@ body {
   -webkit-transition: 1s ease-in-out;
   transition: 1s ease-in-out;
   position: relative;
+  padding: 0% 1% 1% 1%;
 }
 
 .mainContent .pageContent .statistics .card h2 {
+  width: 100%;
   text-align: center;
   color: var(--font-color);
 }
@@ -6438,9 +6477,9 @@ body {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  -webkit-box-pack: safe;
+      -ms-flex-pack: safe;
+          justify-content: safe;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -6606,48 +6645,6 @@ body {
   color: var(--title-color);
 }
 
-.mainContent .pageContent .statistics .card .innercard .Caisse .rangeSliderdiv .rangebg1 {
-  background-color: var(--chartParent-bg);
-  width: 100%;
-  height: 1vh;
-  border-radius: 25px;
-}
-
-.mainContent .pageContent .statistics .card .innercard .Caisse .rangeSliderdiv .rangebg1 .range1 {
-  height: inherit;
-  border-radius: inherit;
-  width: 100%;
-  background-color: #60f00c;
-}
-
-.mainContent .pageContent .statistics .card .innercard .Caisse .rangeSliderdiv .rangebg2 {
-  background-color: var(--chartParent-bg);
-  width: 90%;
-  height: 1vh;
-  border-radius: 25px;
-}
-
-.mainContent .pageContent .statistics .card .innercard .Caisse .rangeSliderdiv .rangebg2 .range2 {
-  height: inherit;
-  border-radius: inherit;
-  width: 55%;
-  background-color: #bff00c;
-}
-
-.mainContent .pageContent .statistics .card .innercard .Caisse .rangeSliderdiv .rangebg3 {
-  background-color: var(--chartParent-bg);
-  width: 90%;
-  height: 1vh;
-  border-radius: 25px;
-}
-
-.mainContent .pageContent .statistics .card .innercard .Caisse .rangeSliderdiv .rangebg3 .range3 {
-  height: inherit;
-  border-radius: inherit;
-  width: 85%;
-  background-color: #60f00c;
-}
-
 .mainContent .pageContent .statistics .card .innercard .Caisse .half {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
@@ -6660,7 +6657,8 @@ body {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  width: 45% !important;
+  width: 48% !important;
+  padding: 1% 3% 0% 3%;
 }
 
 .mainContent .pageContent .statistics .card .innercard .rightInnercard h2 {
@@ -6760,16 +6758,19 @@ body {
 .mainContent .pageContent .productTable #ProductTable tbody tr .full {
   background-color: #60f00c;
   width: 100%;
+  color: var(--color-bg);
 }
 
 .mainContent .pageContent .productTable #ProductTable tbody tr .low {
   background-color: #ff4500;
   width: 70%;
+  color: var(--color-bg);
 }
 
 .mainContent .pageContent .productTable #ProductTable tbody tr .critical {
   background-color: red;
   width: 50%;
+  color: var(--color-bg);
 }
 
 .mainContent .pageContent .productTable #ProductTable tbody tr:hover {
@@ -6805,13 +6806,25 @@ body {
           box-shadow: var(--nm);
   border-radius: 25px;
   padding: 1% 0% 2% 2%;
+  margin-bottom: 2%;
 }
 
 .mainContent .pageContent .messages .messageslist {
-  height: -webkit-max-content;
-  height: -moz-max-content;
-  height: max-content;
+  height: 30vh;
+  overflow-y: scroll;
   padding: 1%;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-bg) var(--scrollbarBG);
+}
+
+.mainContent .pageContent .messages .messageslist::-webkit-scrollbar {
+  width: 4em;
+}
+
+.mainContent .pageContent .messages .messageslist::-webkit-scrollbar-thumb {
+  background-color: var(--thumbBG);
+  border-radius: 15px;
+  border: 3px solid var(--scrollbarBG);
 }
 
 .mainContent .pageContent .messages .messageslist .message {
@@ -6836,6 +6849,7 @@ body {
           align-items: center;
   padding: 2%;
   color: var(--title-color);
+  margin: 2% 0% 0% 0%;
 }
 
 .mainContent .pageContent .messages .messageslist .message .title {
@@ -6882,8 +6896,8 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-shadow: -2px -2px 5px var(--box-shadow2), 3px 3px 5px var(--box-shadow1);
-          box-shadow: -2px -2px 5px var(--box-shadow2), 3px 3px 5px var(--box-shadow1);
+  -webkit-box-shadow: -2px -2px 5px var(--box-shadow1), 3px 3px 5px var(--box-shadow2);
+          box-shadow: -2px -2px 5px var(--box-shadow1), 3px 3px 5px var(--box-shadow2);
   border-radius: 10px;
   -webkit-transition: inherit;
   transition: inherit;

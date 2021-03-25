@@ -14,12 +14,14 @@
 :root{
     --color-bg : #efeeee;
     --font-color: #000;
-    --box-shadow1: rgb(0,0,0,.07);
+    --box-shadow1: #00000012;
     --box-shadow2: #ecd2d2;
     --chartParent-bg: #ffffffbe;
     --title-color: #000000;
     --table-header: #05114b;
     --table-font: #ffffff;
+    --scrollbarBG: #e09145;
+    --thumbBG: #ffffff;
     --nm: 6px 6px 16px 0 rgba(0, 0, 0, 0.2),
           -6px -6px 16px 0 rgba(255, 255, 255, 1);
     --nm-inset:inset 4px 4px 8px 0 rgba(0, 0, 0, 0.2),
@@ -35,6 +37,8 @@
     --title-color: #ffffff;
     --table-header: #0a1a2f8a;
     --table-font: #fff;
+    --scrollbarBG: rgb(228, 228, 228);
+    --thumbBG: #90A4AE;
     --nm: 6px 6px 16px 0 rgba(255, 255, 255, 0.2),
           -6px -6px 16px 0 rgba(0, 0, 0, 0.8);
     --nm-inset:inset 4px 4px 8px 0  rgba(255, 255, 255, 0.2),
@@ -52,6 +56,14 @@ body{
     width: 100%;
     height: 100%;
     position: relative;
+    &::-webkit-scrollbar {
+      width: 4em;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--thumbBG) ;
+      border-radius: 15px;
+      border: 3px solid var(--scrollbarBG);
+    }
 }
 
 .Top{
@@ -192,6 +204,8 @@ body{
       transition: 1s ease-in-out !important;
       background-color: var(--chartParent-bg);
       padding-bottom: 3%;
+      border-bottom-left-radius: 25px;
+      border-bottom-right-radius: 25px;
       .chart{
         padding-left: 2%;
         width: 100%!important;
@@ -206,6 +220,16 @@ body{
       width: 90%;
       font-family: inherit;
       margin-top: -4%;
+      .vente{
+        display: inline-flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        .rightInnercard{
+          width: 48%;
+          height: max-content;
+        }
+      }
       .card{
         width: 28%;
         height: max-content;
@@ -215,7 +239,9 @@ body{
         box-shadow: var(--nm-inset);
         transition: 1s ease-in-out;
         position: relative;
+        padding: 0% 1% 1% 1%;
         h2{
+          width:100%;
           text-align: center;
           color: var(--font-color);
         }
@@ -224,7 +250,7 @@ body{
           height: inherit;
           padding: 0%;
           display: inline-flex;
-          justify-content: space-evenly;
+          justify-content: safe;
           align-items: center;
           flex-wrap: wrap;
           .leftInnercard{
@@ -331,45 +357,7 @@ body{
             width: 100%;
             h2{
               color: var(--title-color);
-            }  
-          .rangebg1{
-            background-color: var(--chartParent-bg);
-            width: 100%;
-            height: 1vh;
-            border-radius: 25px;
-
-            .range1{
-              height: inherit;
-              border-radius: inherit;
-              width: 100%;
-              background-color: #60f00c;
             }
-          }
-            .rangebg2{
-              background-color: var(--chartParent-bg);
-              width: 90%;
-              height: 1vh;
-              border-radius: 25px;
-              .range2{
-                height: inherit;
-                border-radius: inherit;
-                width: 55%;
-                background-color: #bff00c;
-              }
-          }
-          .rangebg3{
-            background-color: var(--chartParent-bg);
-            width: 90%;
-            height: 1vh;
-            border-radius: 25px;
-            .range3{
-              height: inherit;
-              border-radius: inherit;
-              width: 85%;
-              background-color: #60f00c;
-            }
-          }
-           
         }
         
         .half{
@@ -377,7 +365,8 @@ body{
           justify-content: space-between;
           align-items: center;
           flex-wrap: wrap;
-          width: 45%!important;
+          width: 48%!important;
+          padding: 1% 3% 0% 3%;
         } 
         }
         .rightInnercard{
@@ -456,14 +445,17 @@ body{
           .full{
             background-color: #60f00c;
             width: 100%;
+            color: var(--color-bg);
           }
           .low{
             background-color: #ff4500;
             width: 70%;
+            color: var(--color-bg);
           }
           .critical{
             background-color: red;
             width: 50%;
+            color: var(--color-bg);
           }
           &:hover{
             background-color: #00000050;
@@ -496,9 +488,21 @@ body{
       box-shadow: var(--nm);
       border-radius: 25px;
       padding: 1% 0% 2% 2%;
+      margin-bottom: 2%;
       .messageslist{
-        height: max-content;
-        padding: 1%;
+        height: 30vh;
+        overflow-y: scroll;
+        padding: 1%;  
+        scrollbar-width: thin;
+        scrollbar-color: var(--color-bg) var(--scrollbarBG);
+        &::-webkit-scrollbar {
+          width: 4em;
+        }
+        &::-webkit-scrollbar-thumb {
+          background-color: var(--thumbBG) ;
+          border-radius: 15px;
+          border: 3px solid var(--scrollbarBG);
+        }
         .message{
           background: var(--color-bg);
           box-shadow: var(--nm-inset);
@@ -511,6 +515,7 @@ body{
           align-items: center;
           padding: 2%;
           color: var(--title-color);
+          margin: 2% 0% 0% 0%;
           .title{
             padding: 1% 0% 1% 2%;
             width: 20%;
@@ -538,8 +543,8 @@ body{
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: -2px -2px 5px var(--box-shadow2),
-                        3px 3px 5px var(--box-shadow1);
+            box-shadow: -2px -2px 5px var(--box-shadow1),
+                        3px 3px 5px var(--box-shadow2);
             border-radius: 10px; 
             transition: inherit;
             padding: 1%;
